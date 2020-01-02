@@ -1,11 +1,11 @@
 # ローカル環境でLINE BOTを動かしてみよう
 
-## SETUP
+## 準備
 
 ### credentials.jsonに `user_id`, `channel_secret` および `channel_access_token` を入力する
 - 各種credntialsはLINE Developersのチャネル基本設定およびMessaging API設定を参照
 
-## HOW TO USE
+## 実装方法
 
 ### 1-messagingAPI.ipynb    
 #### メッセージを送信するだけのノートブック
@@ -62,7 +62,7 @@
     - 「おはよう」と送ると、「おはようございます」と返ってくる
     - 「スタンプ」と送ると、スタンプが送られてくる
 
-## LIBRARY
+## 使用するライブラリ
 - line-bot-sdk:
     - PythonでLINE Messaging APIを使用するためのSDK(ソフトウェア開発キット）
     - https://pypi.org/project/line-bot-sdk/
