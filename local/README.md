@@ -1,5 +1,4 @@
-# RUN ON LOCAL SERVER
-ローカル環境でLINE BOTを動かすためのもの
+# ローカル環境でLINE BOTを動かしてみよう
 
 ## SETUP
 
