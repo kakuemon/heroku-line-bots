@@ -24,15 +24,53 @@
       -> `2-returnMessage.py`がダウンロードされる
 1. `2-returnMessage.py` がダウンロードフォルダに保存されているので、それをここのディレクトリに持ってくる
 1. `2-returnMessage.py` を `main.py` という名前に変換する
-1. 好きなエディターもしくはjupyter notebookで`main.py`を開き末尾の実行コードを変更する
+1. 好きなエディターもしくはjupyter notebookで`main.py`を開き末尾の実行コードを下記のように書き換えて保存する
 
-    ```sh:before
+    **before**
+    ```py3
     if __name__ == "__main__":
       app.run()
     ```
  
-    ```py3:after
+    **after**
+    ```py3
     if __name__ == "__main__":
       port = int(os.getenv("PORT", 5000))
       app.run(host="0.0.0.0", port=port)
     ```
+
+1. ターミナル上でHerokuにログインし、新規アプリケーション作成する
+    ```sh
+    $ heroku login
+    $ heroku create heroku-line-bot (好きなアプリケーション名)
+    ```
+    
+1. Heroku環境変数の設定をする
+    ```sh
+    $ heroku config:set LINE_CHANNEL_SECRET="<チャネルシークレット>"
+    $ heroku config:set LINE_CHANNEL_ACCESS_TOKEN="<アクセストークン>"
+    ```
+ 
+1. 追加・変更したファイルをコミットしてデプロイする
+    ```sh
+    $ git init (以降このコマンドは実行不要)
+    $ git add .
+    $ git commit -m "new commit"
+    $ git push heroku master
+    ```
+
+1. Webhook登録する
+    LINE DevelopersのMessaging API設定画面で、Webhook URLにデプロイしたアプリケーションのURL「https://heroku-line-bot.herokuapp.com/callback 」を登録する。  
+    **アプリケーション名を変更したらURLも変わるので要注意**
+
+
+## ログ調査
+- もしうまくいかなかったら、下記コマンドでログを確認できる
+    ```sh
+    $ heroku logs --tail
+    ```
+
+## アプリケーション削除
+```sh
+$ heroku apps:destroy --app heroku-line-bot --confirm heroku-line-bot
+``` 
