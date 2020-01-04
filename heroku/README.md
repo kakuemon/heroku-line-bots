@@ -45,7 +45,7 @@
     $ heroku create heroku-line-bot (好きなアプリケーション名)
     ```
     
-1. Heroku環境変数の設定をする
+1. LINEのcredentials情報をHeroku環境変数に設定する
     ```sh
     $ heroku config:set LINE_CHANNEL_SECRET="<チャネルシークレット>"
     $ heroku config:set LINE_CHANNEL_ACCESS_TOKEN="<アクセストークン>"
@@ -53,6 +53,7 @@
  
 1. 追加・変更したファイルをコミットしてデプロイする
     ```sh
+    $ cd <本ディレクトリ>
     $ git init (以降このコマンドは実行不要)
     $ git add .
     $ git commit -m "new commit"
