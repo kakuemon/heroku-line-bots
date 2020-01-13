@@ -24,16 +24,34 @@
       -> `2-returnMessage.py`がダウンロードされる
 1. `2-returnMessage.py` がダウンロードフォルダに保存されているので、それをここのディレクトリに持ってくる
 1. `2-returnMessage.py` を `main.py` という名前に変換する
-1. 好きなエディターもしくはjupyter notebookで`main.py`を開き末尾の実行コードを下記のように書き換えて保存する
+1. 好きなエディターもしくはjupyter notebookで`main.py`を開き、実行コードを下記のように書き換えて保存する
 
     **before**
     ```py3
+    import random, json, requests
+
+    #-------------中略------------------#
+
+    df = pd.read_json("credentials.json")["line"]
+    YOUR_CHANNEL_SECRET = df["channel_secret"]
+    YOUR_CHANNEL_ACCESS_TOKEN = df["channel_access_token"]
+
+    #-------------中略------------------#
+
     if __name__ == "__main__":
       app.run()
     ```
  
     **after**
     ```py3
+    import random, json, requests,os
+    
+    #-------------中略------------------#
+    
+    YOUR_CHANNEL_SECRET =os.environ["LINE_CHANNEL_SECRET"]
+    YOUR_CHANNEL_ACCESS_TOKEN =os.environ["LINE_CHANNEL_ACCESS_TOKEN"]
+    
+    #-------------中略------------------#
     if __name__ == "__main__":
       port = int(os.getenv("PORT", 5000))
       app.run(host="0.0.0.0", port=port)
@@ -53,8 +71,9 @@
  
 1. 追加・変更したファイルをコミットしてデプロイする
     ```sh
-    $ cd <本ディレクトリ>
+    $ cd heroku-line-bots/heroku
     $ git init (以降このコマンドは実行不要)
+    $ git git remote add heroku  <自分のURL>
     $ git add .
     $ git commit -m "new commit"
     $ git push heroku master

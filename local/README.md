@@ -33,7 +33,7 @@
     ```shell
     ngrok http 5000
     ```
-1. 以下のような結果が返ってくるので、Forwardingの前部分（下記の例では `http://7c4d4d83.ngrok.io`)をコピーする
+1. 以下のような結果が返ってくるので、Forwardingの前部分（下記の例では `https://7c4d4d83.ngrok.io`)をコピーする
     ```shell
     ngrok by @inconshreveable                                                                        (Ctrl+C to quit)
 
@@ -48,7 +48,7 @@
     Connections                   ttl     opn     rt1     rt5     p50     p90                                                         
                                   0       0       0.00    0.00    0.00    0.00   
     ```
-1. LINE Developersのチャネルの基本設定画面で、Webhook URLに先ほどコピーしたURL (`http://7c4d4d83.ngrok.io`) + `/callback`を指定する
+1. LINE Developersのチャネルの基本設定画面で、Webhook URLに先ほどコピーしたURL (`https://7c4d4d83.ngrok.io`) + `/callback`を指定する
     <img width="1421" alt="image.png" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/490709/f4dd7429-4d8b-7edc-04fa-c185406961ad.png">
 
     - もしWebhook送信の設定が「利用しない」になっている場合は、「利用する」に編集
