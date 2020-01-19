@@ -59,28 +59,28 @@
 
 1. ターミナル上でHerokuにログインし、新規アプリケーション作成する
     ```sh
+    $ cd heroku-line-bots/heroku
     $ heroku login
-    $ heroku create heroku-line-bot (好きなアプリケーション名)
+    $ heroku create {HEROKU_APP_NAME} (好きなアプリケーション名)
+    $ heroku git:remote -a {HEROKU_APP_NAME}
     ```
     
 1. LINEのcredentials情報をHeroku環境変数に設定する
     ```sh
-    $ heroku config:set LINE_CHANNEL_SECRET="<チャネルシークレット>"
-    $ heroku config:set LINE_CHANNEL_ACCESS_TOKEN="<アクセストークン>"
+    $ heroku config:set LINE_CHANNEL_SECRET={チャネルシークレット}
+    $ heroku config:set LINE_CHANNEL_ACCESS_TOKEN={アクセストークン}
     ```
  
 1. 追加・変更したファイルをコミットしてデプロイする
     ```sh
-    $ cd heroku-line-bots/heroku
     $ git init (以降このコマンドは実行不要)
-    $ git git remote add heroku  <自分のURL>
     $ git add .
     $ git commit -m "new commit"
     $ git push heroku master
     ```
 
 1. Webhook登録する
-    LINE DevelopersのMessaging API設定画面で、Webhook URLにデプロイしたアプリケーションのURL「https://heroku-line-bot.herokuapp.com/callback 」を登録する。  
+    LINE DevelopersのMessaging API設定画面で、Webhook URLにデプロイしたアプリケーションのURL「 https://{HEROKU_APP_NAME}.herokuapp.com/callback 」を登録する。  
     **アプリケーション名を変更したらURLも変わるので要注意**
 
 
